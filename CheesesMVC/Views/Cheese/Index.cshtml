@@ -1,21 +1,25 @@
-﻿@{
-    Layout = null;
+﻿<h1>@ViewBag.Title</h1>;
 
 
-}
-
-<h1>My Cheeses</h1>
-
-<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
-
-@if(ViewBag.cheeses.Count == 0)
+@if (ViewBag.cheeses.Count == 0)
 {
     <p>No Cheeses Yet!</p>
 }
 
-<ul>
-    @foreach (string cheese in ViewBag.cheeses)
+<table class="table">
+
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+
+    @foreach (var cheese in ViewBag.cheeses)
     {
-        <li>@cheese</li>
+        <tr>
+        <td>@cheese.Name</td>
+        <td>@cheese.Description</td>
+        </tr>
     }
-</ul>
+</table>
+
+<p><a asp-controller="Cheese" asp-action="Add">Add Cheese</a></p>
